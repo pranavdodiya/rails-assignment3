@@ -1,0 +1,62 @@
+<div class="container">
+<br>
+<h2><%= link_to "New author", new_author_path %></h2>
+<br>
+<br><br>
+<h3>Listing all Authors</h3>
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Author Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Author's books</th>
+      <th scope="col">Author profile pic</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @authors.each do |p|%>
+    <tr>
+      <td ><%=p.name%></td>
+      <td><%=p.address%></td>
+      <td><%p.books.each do |a|%>
+      <br>
+      <%=a.name%>
+      <%end%></td>
+      <td><%= image_tag p.profile_picture, class: "img" %></td>
+      <td> <%= link_to "Show ", author_path(p) %> <br><%= link_to "edit", edit_author_path(p) %><br><%= link_to "delete ", author_path(p), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"} %> </td>
+    </tr>
+    <%end%>
+    
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

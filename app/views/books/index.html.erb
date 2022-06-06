@@ -1,0 +1,59 @@
+<div class="container">
+<br>
+<h2><%= link_to "New Book", new_book_path %></h2>
+<br>
+<br><br>
+<h3>Listing all Books</h3>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">Book Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Book's cover photos</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @books.each do |p|%>
+    <tr>
+      <td ><%=p.name%></td>
+     
+      <td><%=Author.find(p.author_id).name%></td>
+      <td><% p.cover_photos.each do |image|%>
+  <%=image_tag image,style: "height:10vw;width:10vw;" if p.cover_photos.attached?%>
+  
+  <%end%>
+      </td>
+      <td> <%= link_to "Show ", book_path(p) %> <br><%= link_to "edit", edit_book_path(p) %><br><%= link_to "delete ", book_path(p), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"} %> </td>
+    </tr>
+    <%end%>
+    
+  </tbody>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
